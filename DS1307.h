@@ -129,13 +129,13 @@ RTC_DS1307_stats RTC_DS1307_I2C_config( void );
  * do protocolo I2C e carrega dentro da biblioteca para 
  * comunicar com o relógio RTC
  */
-void RTC_DS1307_load_callbacks(    RTC_DS1307_I2C_callback     I2C_start,
-                                   RTC_DS1307_I2C_callback     I2C_restart,
-                                   RTC_DS1307_I2C_callback     I2C_stop,
-                                   RTC_DS1307_I2C_callback    I2C_sendData_uchar,
-                                   RTC_DS1307_I2C_callback    I2C_receiveData_uchar,
-                                   RTC_DS1307_I2C_callback     I2C_sendAck,
-                                   RTC_DS1307_delay_callback   rtc_ds1307_delay_ms);
+void RTC_DS1307_load_callbacks(    void*     I2C_start,
+                                   void*     I2C_restart,
+                                   void*     I2C_stop,
+                                   void*     I2C_sendData_uchar,
+                                   void*     I2C_receiveData_uchar,
+                                   void*     I2C_sendAck,
+                                   void*   rtc_ds1307_delay_ms);
 
 /* 
  * Função que realiza a LEITURA de um dado, em um determinado endereço do relógio

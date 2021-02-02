@@ -248,7 +248,7 @@ RTC_DS1307_stats RTC_DS1307_I2C_read_calendar( Calendar *data ){
         
         timeInSeconds = mktime(data);
         
-        data = localtime(timeInSeconds);
+        data = localtime(&timeInSeconds);
         
         return RTC_DS1307_OK;
         
@@ -261,13 +261,13 @@ RTC_DS1307_stats RTC_DS1307_I2C_read_calendar( Calendar *data ){
         
 }
 
-void RTC_DS1307_load_callbacks(    RTC_DS1307_I2C_callback     I2C_start,
-                                   RTC_DS1307_I2C_callback     I2C_restart,
-                                   RTC_DS1307_I2C_callback     I2C_stop,
-                                   RTC_DS1307_I2C_callback     I2C_sendData_uchar,
-                                   RTC_DS1307_I2C_callback     I2C_receiveData_uchar,
-                                   RTC_DS1307_I2C_callback     I2C_sendAck,
-                                   RTC_DS1307_delay_callback   rtc_ds1307_delay_ms) {
+void RTC_DS1307_load_callbacks(    void*     I2C_start,
+                                   void*     I2C_restart,
+                                   void*     I2C_stop,
+                                   void*     I2C_sendData_uchar,
+                                   void*     I2C_receiveData_uchar,
+                                   void*     I2C_sendAck,
+                                   void*   rtc_ds1307_delay_ms) {
     
     RTC_DS1307_I2C_wrapper_start           = (RTC_DS1307_stats (*) (int16_t))           I2C_start;
     RTC_DS1307_I2C_wrapper_stop            = (RTC_DS1307_stats (*) (int16_t))           I2C_stop;
